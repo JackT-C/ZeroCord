@@ -10,6 +10,9 @@ interface Message {
   id: string;
   content: string;
   createdAt: string;
+  channelId?: string;
+  senderId?: string;
+  receiverId?: string;
   sender: {
     id: string;
     username: string;
