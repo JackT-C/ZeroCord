@@ -21,6 +21,16 @@ import { initializeSocketHandlers } from './server/socket/index';
 
 dotenv.config();
 
+// Heroku Postgres provides DATABASE_URL starting with 'postgres://'
+// Prisma requires 'postgresql://' - fix it at runtime
+if (process.env.DATABASE_URL && process.env.DATABASE_URL.startsWith('postgres://')) {
+  process.env.DATABASE_URL = process.env.DATABASE_URL.replace('postgres://', 'postgresql://');
+  // Add SSL no-verify for Heroku Postgres self-signed certs
+  if (!process.env.DATABASE_URL.includes('sslmode')) {
+    process.env.DATABASE_URL += '?sslmode=no-verify';
+  }
+}
+
 const dev = process.env.NODE_ENV !== 'production';
 const nextApp = next({ dev });
 const handle = nextApp.getRequestHandler();
