@@ -10,7 +10,7 @@
     "dev:client": "next dev",
     "dev:server": "ts-node-dev --respawn --transpile-only server/index.ts",
     "build": "prisma generate && next build && tsc -p tsconfig.server.json",
-    "start": "node dist/server.js",
+    "start": "npx prisma migrate deploy && node dist/server.js",
     "lint": "next lint",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",

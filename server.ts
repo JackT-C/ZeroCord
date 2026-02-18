@@ -49,6 +49,7 @@ nextApp.prepare().then(() => {
   });
 
   // Middleware
+  app.set('trust proxy', 1); // Required for Heroku (sits behind a proxy)
   app.use(cors({
     origin: (origin, callback) => {
       callback(null, true);
