@@ -19,7 +19,7 @@ interface AuthStore {
   logout: () => Promise<void>;
 }
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || '';
 
 export const useAuthStore = create<AuthStore>((set, get) => ({
   user: null,

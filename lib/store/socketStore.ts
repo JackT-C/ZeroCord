@@ -8,7 +8,7 @@ interface SocketStore {
   disconnect: () => void;
 }
 
-const WS_URL = process.env.NEXT_PUBLIC_WS_URL || 'http://localhost:3001';
+const WS_URL = process.env.NEXT_PUBLIC_WS_URL || (typeof window !== 'undefined' ? window.location.origin : 'http://localhost:3001');
 
 export const useSocketStore = create<SocketStore>((set, get) => ({
   socket: null,

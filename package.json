@@ -2,12 +2,15 @@
   "name": "zerocord",
   "version": "1.0.0",
   "description": "ZeroCord - A minimalistic, clean communication platform",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\"",
     "dev:client": "next dev",
     "dev:server": "ts-node-dev --respawn --transpile-only server/index.ts",
-    "build": "next build",
-    "start": "next start",
+    "build": "prisma generate && next build && tsc -p tsconfig.server.json",
+    "start": "node dist/server.js",
     "lint": "next lint",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
