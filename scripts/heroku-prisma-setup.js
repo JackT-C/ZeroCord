@@ -15,9 +15,9 @@ if (url.startsWith('postgres://')) {
   process.env.DATABASE_URL = url;
 }
 
-console.log('Running prisma db push...');
+console.log('Running prisma db push --force-reset...');
 try {
-  execSync('npx prisma db push --accept-data-loss', {
+  execSync('npx prisma db push --force-reset', {
     stdio: 'inherit',
     env: { ...process.env, DATABASE_URL: url },
   });

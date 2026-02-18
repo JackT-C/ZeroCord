@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "ZeroCord - A minimalistic, clean communication platform",
   "engines": {
-    "node": ">=18.0.0"
+    "node": "18.x"
   },
   "scripts": {
     "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\"",
